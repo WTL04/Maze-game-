@@ -1,0 +1,50 @@
+import pygame, sys
+
+# pygame setup
+pygame.init()
+screen = pygame.display.set_mode((800, 800))
+clock = pygame.time.Clock()
+running = True
+
+
+#text maker
+def draw_text(text, font, text_color, x, y):
+	img = font.render(text, True, text_color)
+	screen.blit(img, (x,y))
+
+def start_screen():
+	pygame.display.set_caption('Images in Pygame!')
+
+	arrowImg = pygame.image.load("C:\\Users\\William\\OneDrive\\Desktop\\pygames\\maze game\\white down arrow.png")
+	smallarrow= pygame.transform.scale(arrowImg, (100,100))
+
+	screen.blit(smallarrow, (350, 600))
+
+	font = pygame.font.SysFont('Times New Roman', 60)
+	color = 'white'
+	draw_text("Place your cursor here", font, color, 150, 500)
+
+
+
+
+
+
+
+#on and off button for game
+while running:
+    # poll for events
+    # pygame.QUIT event means the user clicked X to close your window
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # RENDER YOUR GAME HERE
+
+    start_screen()
+
+    # flip() the display to put your work on screen
+    pygame.display.flip()
+
+    clock.tick(60)  # limits FPS to 60
+
+pygame.quit()
