@@ -1,3 +1,4 @@
+# Example file showing a basic pygame "game loop"
 import pygame, sys
 
 # pygame setup
@@ -5,6 +6,19 @@ pygame.init()
 screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 running = True
+game = False
+
+class button():
+		def __init__(self, x, y, image, scale):
+			width = image.get_width()
+			height = image.get_height()
+			self.image = pygame.transform.scale(image, (int(width*scale), int(height*scale)))
+			self.rect = self.image.get_rect()
+			self.rect.topleft = (x,y)
+
+		def draw(self):
+			#draws button on screen
+			screen.blit(self.image, (self.rect.x, self.rect.y))
 
 
 #text maker
@@ -13,20 +27,23 @@ def draw_text(text, font, text_color, x, y):
 	screen.blit(img, (x,y))
 
 def start_screen():
-	pygame.display.set_caption('Images in Pygame!')
+	screen.fill((105,105,105))
 
-	arrowImg = pygame.image.load("C:\\Users\\William\\OneDrive\\Desktop\\pygames\\maze game\\white down arrow.png")
-	smallarrow= pygame.transform.scale(arrowImg, (100,100))
-
-	screen.blit(smallarrow, (350, 600))
+	startImg = pygame.image.load("C:\\Users\\William\\OneDrive\\Desktop\\pygames\\maze game\\start.png")
+	smallstartImg = pygame.transform.scale(startImg, (200, 200))
+	screen.blit(smallstartImg, (290, 600))
 
 	font = pygame.font.SysFont('Times New Roman', 60)
-	color = 'white'
-	draw_text("Place your cursor here", font, color, 150, 500)
+	draw_text("Welcome to the Maze", font, 'black', 145, 500)
 
 
+def pause_menu():
+	pass
 
 
+def game_screen():
+
+	screen.fill('black')
 
 
 
@@ -40,7 +57,17 @@ while running:
 
     # RENDER YOUR GAME HERE
 
-    start_screen()
+    if event.type == pygame.KEYDOWN:
+    	game = True
+
+
+
+    #determines if game starts
+    if game == False:
+    	start_screen()
+    elif game == True:
+    	game_screen()
+
 
     # flip() the display to put your work on screen
     pygame.display.flip()
