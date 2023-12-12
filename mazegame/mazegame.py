@@ -120,7 +120,7 @@ def game_screen():
 
 		#checks if mouse is on path
 		if is_over(starting_rect, mousepos) or is_over(path1, mousepos) or is_over(path2, mousepos) or is_over(path3, mousepos) or is_over(path4, mousepos) or is_over(path5, mousepos) or is_over(path6, mousepos) or is_over(path7, mousepos) or is_over(path8, mousepos) or is_over(path9, mousepos) or is_over(path10, mousepos) or is_over(path11, mousepos) or is_over(path12, mousepos) or is_over(path13, mousepos) or is_over(path14, mousepos) or is_over(path15, mousepos) or is_over(path16, mousepos) or is_over(path17, mousepos):
-			continue
+			pass
 		else:
 			game_over()
 
